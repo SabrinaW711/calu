@@ -141,9 +141,10 @@ void Widget::on_divButton_clicked()
 
 void Widget::on_equalButton_clicked()
 {
-    QStack<int> s_num, s_opt;
+    QStack<float> s_num, s_opt;
     char opt[128] = {0};
-    int i = 0, tmp = 0, num1, num2;
+    int i = 0, tmp = 0;
+    float num1, num2;
 
     //把QString转化为char*
     QByteArray ba = expression.toUtf8();        //把QString转换为QByteArray
@@ -186,7 +187,7 @@ void Widget::on_equalButton_clicked()
                     s_num.pop();
                     num2 = s_num.top();
                     s_num.pop();
-                    s_num.push(num1 - num2);
+                    s_num.push(num2 - num1);
                     break;
                 case '*':
                     num1 = s_num.top();
@@ -200,7 +201,7 @@ void Widget::on_equalButton_clicked()
                     s_num.pop();
                     num2 = s_num.top();
                     s_num.pop();
-                    s_num.push(num1 / num2);
+                    s_num.push(num2 / num1);
                     break;
                 }
             }
